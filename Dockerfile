@@ -16,7 +16,7 @@ RUN apt-get update && \
     apt-get clean && \
     mkdir /home/myuser/.vnc 
 ##
-RUN apt-get update && sudo apt-get install -y openssh-server supervisor vim git curl autocutsel firefox firefox-locale-zh-hans ttf-wqy-microhei libnet1-dev libpcap0.8-dev && \
+RUN apt-get update && sudo apt-get install -y openssh-server supervisor vim git wget curl autocutsel firefox firefox-locale-zh-hans ttf-wqy-microhei libnet1-dev libpcap0.8-dev && \
     apt-get install -y language-pack-zh-hans-base language-pack-zh-hans language-pack-gnome-zh-hans language-pack-gnome-zh-hans-base && \
     apt-get clean
 ##
