@@ -27,8 +27,7 @@ COPY supervisord.conf /etc/supervisord.conf
 COPY reset.sh /root/reset.sh
 COPY check.sh /root/check.sh
 COPY vnc.sh /root/.vnc/vnc.sh
-RUN chmod +x /root/*.sh /root/.vnc/vnc.sh && \
-    git clone https://github.com/snooda/net-speeder.git net-speeder
+RUN git clone https://github.com/snooda/net-speeder.git net-speeder
 WORKDIR net-speeder
 RUN sh build.sh && \
     mv net_speeder /usr/local/bin/
@@ -38,10 +37,9 @@ ADD passwd /root/.vnc/passwd
 
 ADD entrypoint.sh /usr/sbin
 RUN chmod 600 /root/.vnc/passwd && \
-    chmod +x /usr/sbin/entrypoint.sh /usr/local/bin/net_speeder
+    chmod +x /usr/local/bin/net_speeder
 WORKDIR /root
 
 EXPOSE 22 5901 443 80
 ENTRYPOINT ["entrypoint.sh"]
-
 
